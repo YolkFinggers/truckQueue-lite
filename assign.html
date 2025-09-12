@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Truck Queue - Staff</title>
+  <link rel="stylesheet" href="css/assign.css">
+</head>
+<body>
+  <h2>Truck Queue - Staff Input</h2>
+
+  <form id="truckForm">
+    <div>
+    <input type="text" id="plate" placeholder="Number Plate" required>
+    </div>
+    <div>
+    <input type="text" id="bay" placeholder="Loading Bay" required>
+    </div>
+    <div>
+    <button type="submit">Add Truck</button>
+    </div>
+  </form>
+
+  <h3>Assigned Trucks</h3>
+
+  <div id="assignedList" class="truck-list"></div>
+
+  <button id="clearStorageBtn">Clear All Data</button>
+
+  <script src="js/assign.js"></script>
+</body>
+</html>

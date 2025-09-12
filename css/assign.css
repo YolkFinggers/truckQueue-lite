@@ -1,0 +1,24 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(246, 222, 192); 
+text-align: center;
+  margin: 20px;
+}
+
+input, button {
+  margin: 5px;
+  padding: 8px;
+}
+
+.truck-list {
+  margin-top: 20px;
+}
+
+.truck {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+button {
+  cursor: pointer;
+}
