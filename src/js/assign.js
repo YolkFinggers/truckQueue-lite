@@ -55,7 +55,7 @@ function clearAllStorage() {
 document.getElementById("clearStorageBtn").addEventListener("click", clearAllStorage);
 
 function openNewDisplay() {
-  window.open("src/display.html", 'popup');
+  window.open("display.html", 'popup');
 }
 
 document.getElementById("openDisplay").addEventListener("click", openNewDisplay);
