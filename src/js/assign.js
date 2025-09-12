@@ -16,9 +16,9 @@ function render() {
     const div = document.createElement("div");
     div.className = "truck";
     div.innerHTML = `
-      <b>${truck.time}<b> | Plate: <b>${truck.plate}</b> → Bay <b>${truck.bay}</b>
+      <b>${formatDateTime(truck.time)}<b> | Plate: <b>${truck.plate}</b> → Bay <b>${truck.bay}</b>
       <button onclick="markFailed(${index})">Mark Failed</button>
-      <button onclick="done(${index})">Done</button>
+      <button onclick="done(${index})">Reached</button>
     `;
     assignedList.appendChild(div);
   });
@@ -54,16 +54,31 @@ function clearAllStorage() {
 
 document.getElementById("clearStorageBtn").addEventListener("click", clearAllStorage);
 
+function openNewDisplay() {
+  window.open("display.html", 'popup');
+}
 
-function getCurrentTime() {
-  const now = new Date();
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
+document.getElementById("openDisplay").addEventListener("click", openNewDisplay);
 
-  hours = hours < 10 ? '0' + hours : hours;
-  minutes = minutes < 10 ? '0' + minutes : minutes;
+function formatDateTime(ms) {
+  const d = new Date(ms);
 
-  return `${hours}:${minutes}`;
+  // Extract date parts
+  let year = d.getFullYear();
+  let month = d.getMonth() + 1; // months are 0-indexed
+  let day = d.getDate();
+
+  // Extract time parts
+  let hours = d.getHours();
+  let minutes = d.getMinutes();
+
+  // Pad with leading zeros
+  month = month < 10 ? "0" + month : month;
+  day = day < 10 ? "0" + day : day;
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+
+  return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
 
 
@@ -75,7 +90,7 @@ document.getElementById("truckForm").addEventListener("submit", (e) => {
   if (!plate || !bay) return;
 
   const data = getData();
-  data.assigned.unshift({ plate, bay, time: getCurrentTime() });
+  data.assigned.unshift({ plate, bay, time: Date.now() });
   if (data.assigned.length > 15) data.assigned.pop(); 
   saveData(data);
 
@@ -83,6 +98,34 @@ document.getElementById("truckForm").addEventListener("submit", (e) => {
   document.getElementById("bay").value = "";
   render();
 });
+
+function autoFail(minutes) {
+  const data = getData();
+  const now = Date.now();
+  const threshold = minutes * 60 * 1000; // convert minutes to milliseconds
+
+  for (let i = data.assigned.length - 1; i >= 0; i--) {
+    if (now - data.assigned[i].time >= threshold) {
+      const truck = data.assigned.splice(i, 1)[0];
+      if (truck) data.failed.unshift(truck);
+    if (data.failed.length > 5) data.failed.pop(); 
+    }
+  }
+
+  saveData(data);
+  render(); // update UI
+}
+
+function getFailTime() {
+  const input = document.getElementById("failTime");
+  return parseInt(input.value, 10) || 5; // fallback = 5 minutes
+}
+
+// Run auto-fail check every 30 seconds
+setInterval(() => {
+  const minutes = getFailTime();
+  autoFail(minutes);
+}, 30000);
 
 window.addEventListener("storage", render);
 render();
