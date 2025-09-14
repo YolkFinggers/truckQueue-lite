@@ -17,8 +17,8 @@ function render() {
     div.className = "truck";
     div.innerHTML = `
       <b>${formatDateTime(truck.time)}<b> | Plate: <b>${truck.plate}</b> → Bay <b>${truck.bay}</b>
-      <button onclick="markFailed(${index})">Mark Failed</button>
-      <button onclick="done(${index})">Reached</button>
+      <button style='width: 40%' onclick="markFailed(${index})">Mark Failed</button>
+      <button style='width: 40%' onclick="done(${index})">Reached</button>
     `;
     assignedList.appendChild(div);
   });
