@@ -125,6 +125,15 @@ button:hover {
   input, button {
     font-size: 0.9rem;
   }
+  .button-group {
+    flex-direction: column; /* stack vertically */
+    align-items: stretch;  /* full width buttons */
+  }
+
+  .button-group button {
+    flex: none; /* reset flex */
+    width: 100%; /* take full available width */
+  }
 }
 
 /*Phone version*/
@@ -141,5 +150,14 @@ button:hover {
   }
   h2, h3 {
     font-size: 1.2rem;
+  }
+  .button-group {
+    flex-direction: column; /* stack vertically */
+    align-items: stretch;  /* full width buttons */
+  }
+
+  .button-group button {
+    flex: none; /* reset flex */
+    width: 100%; /* take full available width */
   }
 }
