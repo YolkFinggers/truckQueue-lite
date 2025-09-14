@@ -6,29 +6,46 @@
   <link rel="stylesheet" href="src/css/assign.css">
 </head>
 <body>
-  <h2>Truck Queue - Staff Input</h2>
+  <div class="layout">
+  <div class="left-sidebar">
+    <!-- Put extra stuff here -->
+  </div>
 
-  <form id="truckForm">
-    <div>
-    <input type="text" id="plate" placeholder="Number Plate" required>
+  <div class="main">
+    <h2>Truck Queue - Staff Input</h2>
+
+    <form id="truckForm">
+      <div>
+        <input type="text" id="plate" placeholder="Number Plate" required>
+      </div>
+      <div>
+        <input type="text" id="bay" placeholder="Loading Bay" required>
+      </div>
+      <div>
+        <button type="submit">Add Truck</button>
+      </div>
+    </form>
+
+    <h3>Assigned Trucks</h3>
+    <div id="assignedList" class="truck-list"></div>
+
+    <div class="button-group">
+      <button id="clearStorageBtn">Clear All Data</button>
+      <button id="openDisplay">Open Display</button>
     </div>
-    <div>
-    <input type="text" id="bay" placeholder="Loading Bay" required>
+
+    <div class="auto-fail-container">
+      <label for="failTime">Auto fail after minutes:</label>
+      <input type="number" id="failTime" value="15" min="1" max="99" step="1">
     </div>
-    <div>
-    <button type="submit">Add Truck</button>
-    </div>
-  </form>
+  </div>
 
-  <h3>Assigned Trucks</h3>
+  <div class="right-sidebar">
+    <!-- Put extra stuff here -->
+  </div>
+</div>
 
-  <div id="assignedList" class="truck-list"></div>
 
-  <button id="clearStorageBtn">Clear All Data</button>
-  <button id="openDisplay">Open Display</button>
-  <br>
-  <label for="failTime">Auto fail after minutes:</label>
-<input type="number" id="failTime" value="15" min="1" step="1">
 
   <script src="src/js/assign.js"></script>
 </body>
