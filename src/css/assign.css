@@ -137,7 +137,7 @@ button:hover {
 }
 
 /*Phone version*/
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   body {
     padding: 10px;
   }
