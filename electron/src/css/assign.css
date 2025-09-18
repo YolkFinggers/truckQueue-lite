@@ -1,0 +1,163 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(246, 222, 192); 
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+h2, h3 {
+  margin-bottom: 15px;
+}
+
+/* Form container */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+  background: #fff8f0;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Inputs and buttons */
+input, button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  background: #f28b30;
+  color: white;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #d97706;
+}
+
+/* Assigned trucks list */
+.truck-list {
+  margin-top: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.truck {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Auto fail input container */
+.auto-fail-container {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#failTime {
+  width: 8ch; /* only enough for 2 digits */
+  text-align: center;
+  font-size: 1rem;
+  padding: 6px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap; /* allows stacking if space is too tight */
+}
+
+.button-group button {
+  flex: 0.5; /* makes them equal width on larger screens, change value base on size you want, 1 if you want to fill the entire 50% */
+  min-width: 120px;
+}
+
+/* Layout container */
+.layout {
+  display: flex;
+  flex-direction: column; /* default stack for smaller screens */
+}
+
+/* Sections */
+.left-sidebar,
+.right-sidebar {
+  flex: 1; /* 25% each */
+}
+.main {
+  flex: 2; /* 50% */
+}
+
+/* Apply split only on big screens */
+@media (min-width: 1024px) {
+  .layout {
+    flex-direction: row;
+  }
+}
+
+
+/* Tablet version*/
+@media (max-width: 768px) {
+  form {
+    max-width: 90%;
+  }
+  input, button {
+    font-size: 0.9rem;
+  }
+  .button-group {
+    flex-direction: column; /* stack vertically */
+    align-items: stretch;  /* full width buttons */
+  }
+
+  .button-group button {
+    flex: none; /* reset flex */
+    width: 100%; /* take full available width */
+  }
+}
+
+/*Phone version*/
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  form {
+    padding: 15px;
+  }
+  input, button {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+  h2, h3 {
+    font-size: 1.2rem;
+  }
+  .button-group {
+    flex-direction: column; /* stack vertically */
+    align-items: stretch;  /* full width buttons */
+  }
+
+  .button-group button {
+    flex: none; /* reset flex */
+    width: 100%; /* take full available width */
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truck Queue - Staff</title>
+  <link rel="stylesheet" href="./css/assign.css">
+</head>
+<body>
+  <div class="layout">
+  <div class="left-sidebar">
+    <!-- Put extra stuff here -->
+  </div>
+
+  <div class="main">
+    <h2>Truck Queue - Staff Input</h2>
+
+    <form id="truckForm">
+      <div>
+        <input type="text" id="plate" placeholder="Number Plate" required>
+      </div>
+      <div>
+        <input type="text" id="bay" placeholder="Loading Bay" required>
+      </div>
+      <div>
+        <button type="submit">Add Truck</button>
+      </div>
+    </form>
+
+    <h3>Assigned Trucks</h3>
+    <div id="assignedList" class="truck-list"></div>
+
+    <div class="button-group">
+      <button id="clearStorageBtn">Clear All Data</button>
+      <button id="openDisplay">Open Display</button>
+    </div>
+
+    <div class="auto-fail-container">
+      <label for="failTime">Auto fail after minutes:</label>
+      <input type="number" id="failTime" value="15" min="1" max="99" step="1">
+    </div>
+  </div>
+
+  <div class="right-sidebar">
+    <!-- Put extra stuff here -->
+  </div>
+</div>
+
+
+
+  <script src="./js/assign.js"></script>
+</body>
+</html>
