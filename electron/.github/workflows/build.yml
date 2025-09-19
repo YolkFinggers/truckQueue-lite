@@ -2,9 +2,9 @@ name: Build Electron App
 
 on:
   push:
-    branches: [ Electron ]
+    branches: [Electron]
   pull_request:
-    branches: [ Electron ]
+    branches: [Electron]
   release:
     types: [created]
 
@@ -17,16 +17,45 @@ jobs:
         os: [windows-latest, ubuntu-latest]
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Build Electron App
-      run: npm run dist
+      - name: Build Electron App
+        run: |
+          if [ "${{ matrix.os }}" == "windows-latest" ]; then
+            npm run dist -- -w
+          else
+            npm run dist -- -l
+          fi
+
+      - name: Rename artifacts with version and OS
+        if: github.event_name == 'release'
+        run: |
+          VERSION=${{ github.event.release.tag_name }}
+          OS_NAME=""
+          if [ "${{ matrix.os }}" == "windows-latest" ]; then
+            OS_NAME="Windows"
+          else
+            OS_NAME="Linux"
+          fi
+          for f in dist/*; do
+            EXT="${f##*.}"
+            NEWNAME="TruckQueue-${VERSION}-${OS_NAME}.${EXT}"
+            mv "$f" "dist/$NEWNAME"
+          done
+
+      - name: Upload artifacts to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
