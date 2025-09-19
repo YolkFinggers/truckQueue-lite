@@ -1,9 +1,9 @@
 # Project Overview
 A web-based truck queue management system designed for operators and staff. Initially implemented with **pure HTML, CSS, and JS** for lightweight use in browsers. Later duplicated and migrated to **Electron** for easier installation.
 
-Uses Dual Monitor, should still work without second monitor
+Mainly uses Dual Monitor, should still work without second monitor
 
-> [GitHub](https://github.com/YolkFinggers/truckQueue)
+> For the full version: [GitHub](https://github.com/YolkFinggers/truckQueue) (Under development as of 2025 Sep 19th)
 
 # Installation
 ## w/o Electron
