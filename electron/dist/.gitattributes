@@ -1,0 +1,2 @@
+*.exe filter=lfs diff=lfs merge=lfs -text
+C:/Users/User/webdev/truckQueue/electron/dist/linux-unpacked/myproject-electron filter=lfs diff=lfs merge=lfs -text
