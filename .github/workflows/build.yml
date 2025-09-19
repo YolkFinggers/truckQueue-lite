@@ -25,10 +25,10 @@ jobs:
         run: npm ci
 
       - name: Install Linux build dependencies
+        if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-dev fakeroot rpm
-
 
       - name: Build Electron App
         run: |
@@ -50,7 +50,7 @@ jobs:
           fi
           for f in dist/*; do
             EXT="${f##*.}"
-            NEWNAME="TruckQueue-${VERSION}-${OS_NAME}.${EXT}"
+            NEWNAME="TruckQueue-Lite-${OS_NAME}.${EXT}"
             mv "$f" "dist/$NEWNAME"
           done
 
