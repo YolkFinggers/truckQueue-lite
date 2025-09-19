@@ -1,0 +1,53 @@
+## Project Overview
+A web-based truck queue management system designed for operators and staff. Initially implemented with **pure HTML, CSS, and JS** for lightweight use in browsers. Later duplicated and migrated to **Electron** for easier installation.
+
+Uses Dual Monitor, should still work without second monitor
+
+> [GitHub](https://github.com/YolkFinggers/truckQueue)
+
+---
+
+## Development Timeline & Key Decisions
+
+### Phase 1: Initial Web App (Lite Version)
+- Built using **pure HTML, CSS, JS** (no SDK used).  
+- Relied on **user’s own browser** to run.  
+- Features implemented:
+  - Display truck queue, assigned loading bay with no status and failed to reach loading bay
+  - Basic add truck form.
+  - Queue table in assign.html for operators with "Mark Failed" and "Reached" button.
+
+- **Notes:**
+  - No SDK, lightweight and portable.
+  - End-users only needed a browser to use the app but....
+  - Setup included a `.bat` script for auto-start on Windows, **MUST HAVE** Google Chrome installed.
+
+---
+
+### Phase 2: Electron Transition
+- Duplicated/migrated the web app to **Electron** for better desktop integration.  
+- Goals of this Electron version:
+  - Support both on Linux & Windows
+  - Multi-monitor support without relying on any pre-installed browser.
+  - Simplify setting up auto-start web app on device startup
+
+- **Challenges & Solutions:**
+  - Startup issues: Ensured Electron executes the entirety of the app correctly via `.exe`.
+  - Build errors: Resolved symbolic link permissions by running CMD as admin.
+  - File packaging: Decided to upload only `.exe` in releases; Linux/unpacked files are large and without extension.
+
+---
+
+## Notes on Technology & Setup
+- **Electron**: Main platform for all future development.  
+- **Google**: Only needed if not using Electron
+- **Distribution**: GitHub releases with `.exe` packaged; end-users don’t need to install anything beyond this.  
+
+---
+
+##  Status
+- Electron wrapper fully functional.
+- Base queue display/management UI implemented.
+- Functions implemented
+
+# Project Completed - 2025 September 19th
