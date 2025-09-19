@@ -1,0 +1,32 @@
+name: Build Electron App
+
+on:
+  push:
+    branches: [ Electron ]
+  pull_request:
+    branches: [ Electron ]
+  release:
+    types: [created]
+
+jobs:
+  build:
+    name: Build cross-platform
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build Electron App
+      run: npm run dist

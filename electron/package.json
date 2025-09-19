@@ -1,0 +1,29 @@
+{
+  "name": "myproject-electron",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.mycompany.myapp",
+    "productName": "TruckQueue",
+    "files": [
+      "main.js",
+      "package.json",
+      "src/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac":null,
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "devDependencies": {
+    "electron": "^38.1.2",
+    "electron-builder": "^26.0.20"
+  }
+}
