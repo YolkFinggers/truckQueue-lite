@@ -16,7 +16,7 @@ Requires [Google Chrome](https://www.google.com/intl/en_uk/chrome/?brand=NMEO&ds
 *Note: You can tweak the source file*
 
 ## Electron version 
-[Download for Windows](https://github.com/YolkFinggers/truckQueue-lite/releases/download/electronV1/truckQueue.exe) <br>
-[Download for Linux](https://github.com/YolkFinggers/truckQueue/releases/download/v1.0.1/TruckQueue-Lite-Linux.AppImage)
+[Download for Windows](https://github.com/YolkFinggers/truckQueue/releases/download/v1.0.2/TruckQueue-Lite-Windows.exe) <br>
+[Download for Linux](https://github.com/YolkFinggers/truckQueue/releases/download/v1.0.2/TruckQueue-Lite-Linux.AppImage)
 
 *Note: No requirements, but no changes can be made*
